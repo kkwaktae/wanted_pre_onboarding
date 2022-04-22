@@ -43,4 +43,7 @@ header {
   background: #fff;
   color: #131313;
   transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
 }

@@ -1,11 +1,13 @@
 import React from "react";
+import "../../styles/tab.css";
+import TabHeader from "./TabHeader";
+import TabContent from "./TabContent";
 
 const Tab = () => {
   return (
     <div>
-      <header>
-        <h2>tab</h2>
-      </header>
+      <TabHeader></TabHeader>
+      <TabContent></TabContent>
     </div>
   );
 };

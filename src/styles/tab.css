@@ -1,0 +1,39 @@
+header {
+  padding: 5% 0;
+  text-align: center;
+}
+
+.tab-box {
+  position: relative;
+  width: 40%;
+  margin: 2% auto;
+  display: flex;
+}
+
+.tab-box li {
+  width: calc(100% / 3);
+  cursor: pointer;
+  padding: 2% 0;
+  color: #aaa;
+  text-align: center;
+}
+
+.parent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 3px solid #eee;
+}
+
+.child-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% / 3);
+  border-bottom: 3px solid #1de9b6;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
