@@ -1,0 +1,46 @@
+header {
+  padding: 5% 0;
+  text-align: center;
+}
+
+.toggle-box {
+  position: relative;
+}
+
+.toggle-box {
+  width: 25%;
+  min-width: 15em;
+  padding: 1%;
+  margin: 0 auto;
+  background: #ddd;
+  border-radius: 10em;
+  display: flex;
+  cursor: pointer;
+}
+
+.toggle-btn {
+  width: 50%;
+  color: #999;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-indent: 0.1em;
+  text-align: center;
+  z-index: 3;
+}
+
+.basic {
+  color: #131313;
+}
+
+.mover {
+  width: 50%;
+  height: 80%;
+  border-radius: 10em;
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  background: #fff;
+  color: #131313;
+  transition: all 0.2s ease;
+}
