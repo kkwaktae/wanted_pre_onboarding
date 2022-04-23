@@ -1,6 +1,42 @@
 import React from "react";
 import { useState } from "react";
-import { useRef } from "react";
+
+const TabList = ({ arr, tab, setTab }) => {
+  const tabList = arr.map((item) => (
+    <li
+      className={`tap-item${item.id}`}
+      key={item.id}
+      onClick={(e) => {
+        e.preventDefault();
+        setTab(item.name);
+      }}
+      style={{ color: tab === item.name ? "#333" : null }}
+    >
+      <h3>{item.name}</h3>
+    </li>
+  ));
+
+  return tabList;
+};
+
+const MoveTool = ({ arr, tab }) => {
+  let move = null;
+
+  if (tab === arr[0].name) {
+    move = { left: "0" };
+  } else if (tab === arr[1].name) {
+    move = { left: "33.333%" };
+  } else {
+    move = { left: "66.666%" };
+  }
+
+  return (
+    <div>
+      <div className={"parent-line"}></div>
+      <div className={"child-line"} style={move}></div>
+    </div>
+  );
+};
 
 const TabContent = () => {
   const arr = [
@@ -10,36 +46,11 @@ const TabContent = () => {
   ];
   const [tab, setTab] = useState(arr[0].name);
 
-  const bar = useRef();
-
-  const tabList = arr.map((item) => (
-    <li
-      className={`tap-item${item.id}`}
-      key={item.id}
-      onClick={(e) => {
-        e.preventDefault();
-        setTab(item.name);
-
-        if (item.name === arr[0].name) {
-          bar.current.style.left = "0";
-        } else if (item.name === arr[1].name) {
-          bar.current.style.left = "33.333%";
-        } else {
-          bar.current.style.left = "66.666%";
-        }
-      }}
-      style={{ color: tab === item.name ? "#333" : null }}
-    >
-      <h3>{item.name}</h3>
-    </li>
-  ));
-
   return (
     <div className={"main-container"}>
       <ul className={"tab-box"}>
-        {tabList}
-        <div className={"parent-line"}></div>
-        <div className={"child-line"} ref={bar}></div>
+        <TabList arr={arr} tab={tab} setTab={setTab} />
+        <MoveTool arr={arr} tab={tab} />
       </ul>
     </div>
   );

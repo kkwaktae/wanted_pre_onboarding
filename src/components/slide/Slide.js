@@ -1,11 +1,12 @@
 import React from "react";
+import SlideHeader from "./SlideHeader";
+import SlideContent from "./SlideContent";
 
 const Slide = () => {
   return (
-    <div>
-      <header>
-        <h2>slide</h2>
-      </header>
+    <div className={"wrapper"}>
+      <SlideHeader></SlideHeader>
+      <SlideContent></SlideContent>
     </div>
   );
 };

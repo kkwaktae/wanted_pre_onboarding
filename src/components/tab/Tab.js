@@ -5,7 +5,7 @@ import TabContent from "./TabContent";
 
 const Tab = () => {
   return (
-    <div>
+    <div className={"wrapper"}>
       <TabHeader></TabHeader>
       <TabContent></TabContent>
     </div>

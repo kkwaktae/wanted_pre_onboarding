@@ -5,7 +5,7 @@ import ToggleContent from "./ToggleContent";
 
 const Toggle = () => {
   return (
-    <div>
+    <div className={"wrapper"}>
       <ToggleHeader></ToggleHeader>
       <ToggleContent></ToggleContent>
     </div>
