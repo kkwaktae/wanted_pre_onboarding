@@ -2,3 +2,64 @@ header {
   padding: 5% 0;
   text-align: center;
 }
+
+.input-container {
+  width: 20%;
+  padding: 1% 2%;
+  margin: 0 auto;
+  background: #efefef;
+  border-radius: 0.3em;
+}
+
+.input-form {
+  margin: 5% 0;
+}
+
+.input-form .email-title,
+.password-title {
+  font-size: 0.8em;
+}
+
+.input-form input {
+  border-radius: 0.3em;
+  border: 1px solid #aaa;
+  margin: 1% 0;
+  width: 100%;
+  padding: 3% 10% 3% 5%;
+}
+
+.email-box {
+  position: relative;
+}
+
+.password-box {
+  position: relative;
+}
+
+.icon-email {
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+  color: #aaa;
+  /* color:#00bfa5 */
+  position: absolute;
+  top: calc(50% - 0.5em);
+  right: calc(3% + 0.08em);
+}
+
+.icon-password {
+  width: 1em;
+  height: 1em;
+  font-size: 1.2em;
+  color: #666;
+  position: absolute;
+  top: calc(50% - 0.5em);
+  right: 3%;
+  cursor: pointer;
+}
+
+.email-reconfirm {
+  font-size: 0.65em;
+  color: #d50000;
+  visibility: hidden;
+}

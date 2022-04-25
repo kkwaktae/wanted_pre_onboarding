@@ -1,6 +1,6 @@
 import React from "react";
 
-const SlideHeader = () => {
+const SliderHeader = () => {
   return (
     <header>
       <h2>slide</h2>
@@ -8,4 +8,4 @@ const SlideHeader = () => {
   );
 };
 
-export default SlideHeader;
+export default SliderHeader;

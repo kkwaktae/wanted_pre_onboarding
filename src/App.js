@@ -2,11 +2,11 @@ import "./App.css";
 import { useState } from "react";
 import Toggle from "./components/toggle/Toggle";
 import Tab from "./components/tab/Tab";
-import Slide from "./components/slide/Slide";
+import Slider from "./components/slider/Slider";
 import Input from "./components/input/Input";
 import Dropdown from "./components/dropdown/Dropdown";
 
-const Nav = ({ comp, setComp, navArr }) => {
+const Nav = ({ setComp, navArr }) => {
   const list = navArr.map((item) => (
     <li
       className="nav-name"
@@ -31,7 +31,7 @@ const Main = ({ comp, navArr }) => {
 
   if (comp === navArr[0].title) content = <Toggle />;
   if (comp === navArr[1].title) content = <Tab />;
-  if (comp === navArr[2].title) content = <Slide />;
+  if (comp === navArr[2].title) content = <Slider />;
   if (comp === navArr[3].title) content = <Input />;
   if (comp === navArr[4].title) content = <Dropdown />;
 
@@ -42,7 +42,7 @@ function App() {
   const navArr = [
     { id: 1, title: "Toggle" },
     { id: 2, title: "Tab" },
-    { id: 3, title: "Slide" },
+    { id: 3, title: "Slider" },
     { id: 4, title: "Input" },
     { id: 5, title: "Dropdown" },
   ];

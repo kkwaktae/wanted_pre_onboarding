@@ -1,11 +1,13 @@
 import React from "react";
+import "../../styles/input.css";
+import InputHeader from "./InputHeader";
+import InputContent from "./InputContent";
 
 const Input = () => {
   return (
-    <div>
-      <header>
-        <h2>input</h2>
-      </header>
+    <div className={"wrapper"}>
+      <InputHeader />
+      <InputContent />
     </div>
   );
 };

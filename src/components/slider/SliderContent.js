@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import "../../styles/slide.css";
 
 const LivePercentage = ({ per }) => {
   const val = per;
@@ -13,6 +12,42 @@ const LivePercentage = ({ per }) => {
 };
 
 const ToolBox = ({ per, setPer }) => {
+  const listArr = [
+    {
+      id: 1,
+      title: "point1 po",
+      percentage: 1,
+    },
+    {
+      id: 2,
+      title: "point2 po",
+      percentage: 25,
+    },
+    {
+      id: 3,
+      title: "point3 po",
+      percentage: 50,
+    },
+    {
+      id: 4,
+      title: "point4 po",
+      percentage: 75,
+    },
+    {
+      id: 5,
+      title: "point5 po",
+      percentage: 100,
+    },
+  ];
+
+  const list = listArr.map((item) => (
+    <li
+      key={item.id}
+      className={item.title}
+      style={{ backgroundColor: per >= item.percentage ? "#00bfa5" : null }}
+    ></li>
+  ));
+
   const dragPointer = (e) => {
     const val = e.target.value;
     setPer(val);
@@ -33,26 +68,7 @@ const ToolBox = ({ per, setPer }) => {
         className={"bar-line gage"}
         style={{ width: per > 0 ? `${per}%` : null }}
       ></li>
-      <li
-        className={"point1 po"}
-        style={{ backgroundColor: per >= 1 ? "#00bfa5" : null }}
-      ></li>
-      <li
-        className={"point2 po"}
-        style={{ backgroundColor: per >= 25 ? "#00bfa5" : null }}
-      ></li>
-      <li
-        className={"point3 po"}
-        style={{ backgroundColor: per >= 50 ? "#00bfa5" : null }}
-      ></li>
-      <li
-        className={"point4 po"}
-        style={{ backgroundColor: per >= 75 ? "#00bfa5" : null }}
-      ></li>
-      <li
-        className={"point5 po"}
-        style={{ backgroundColor: per >= 100 ? "#00bfa5" : null }}
-      ></li>
+      {list}
     </ul>
   );
 };
@@ -94,7 +110,7 @@ const PercentageBtn = ({ setPer }) => {
   return <ul className={"percentage-box"}>{btn}</ul>;
 };
 
-const SlideContent = () => {
+const SliderContent = () => {
   const [per, setPer] = useState(50);
 
   return (
@@ -106,4 +122,4 @@ const SlideContent = () => {
   );
 };
 
-export default SlideContent;
+export default SliderContent;
