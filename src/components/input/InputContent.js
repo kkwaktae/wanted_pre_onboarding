@@ -1,7 +1,13 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 
-// e-mail input 컴포넌트
+/** EmailInput 컴포넌트
+ *  e-mail 입력란을 제어합니다.
+ *  e-mail을 입력할 때, 정규식을 감지하고, 양식에 맞을 때 true를 반환합니다
+ *  true를 반환하면, reconfirm 문구가 노출되지 않습니다.
+ * @param {Object} {types, emailCheck, setEmailCheck, displayReconfirm, setDisplayReconfirm}
+ * @returns
+ */
 const EmailInput = ({
   types,
   emailCheck,
@@ -16,9 +22,10 @@ const EmailInput = ({
     e.preventDefault();
     const value = e.target.value;
 
-    // e-mail 양식 감지
+    // 정규식으로 e-mail 양식 감지
     const regExp = /^([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
     if (regExp.test(value)) {
+      //양식이 맞으면 emailCheck와 displayReconfirm 상태를 제어하여 상태에 적합한 UI 노출
       setEmailCheck(true);
       setDisplayReconfirm(false);
     } else if (value.trim() === "") {
@@ -28,12 +35,12 @@ const EmailInput = ({
     }
   };
 
-  // 탭키 또는 엔터키 입력 시 email 형식 적합성 체크
+  // 탭키 또는 엔터키 입력 시 email 형식 적합성 체크 후 UI 노출
   const confirmEmail = (e) => {
     const keyNumber = e.keyCode;
 
     if (keyNumber === 13) {
-      // email 형식이 올바르지 않으면 오류 문구 보여주기
+      // email 양식이 올바르지 않으면 오류 문구 보여주기
       if (!emailCheck) {
         setDisplayReconfirm(true);
       } else {
@@ -81,7 +88,12 @@ const EmailInput = ({
   );
 };
 
-// Password input 컴포넌트
+/** PasswordInput 컴포넌트
+ *  type 변경 UI 클릭 시 passwordSafety 상태값을 변경하고 input의 type을 password <-> text로 변경합니다.
+ *  useRef 훅을 사용하여, type 변경 UI 클릭 시 passwordSafety의 값이 변화할 때만 재렌더링 되어 password 인풋의 커서 맨 마지막 위치에 포커싱합니다.
+ * @param {Object} {types}
+ * @returns
+ */
 const PasswordInput = ({ types }) => {
   const [passwordType, setPasswordType] = useState(types[1]);
   const [passwordSafety, setPasswordSafety] = useState(true);
@@ -89,6 +101,7 @@ const PasswordInput = ({ types }) => {
   const passwordRef = useRef();
 
   useEffect(() => {
+    // passwordSafety의 값이 변화할 때만 재렌더링
     passwordRef.current.focus();
   }, [passwordSafety]);
 
@@ -129,7 +142,11 @@ const PasswordInput = ({ types }) => {
   );
 };
 
-// form 박스
+/** InputForm 컴포넌트
+ *  emailCheck 변수로 e-mail UI에 대한 상태를 제어합니다.
+ *  displayReconfirm 변수로 e-mail 정규식에 대한 상태를 제어합니다.
+ * @returns
+ */
 const InputForm = () => {
   const types = ["text", "password"];
   const [emailCheck, setEmailCheck] = useState(false);
@@ -154,6 +171,10 @@ const InputForm = () => {
   );
 };
 
+/** InputContent 컴포넌트
+ *  인풋 기능의 메인 컴포넌트
+ * @returns
+ */
 const InputContent = () => {
   return (
     <div className={"input-container"}>

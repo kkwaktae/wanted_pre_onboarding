@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from "react";
 
 /**
  * SearchBar 컴포넌트
- * ~~기능이다
  *
  * @param {Object} {setSearchInputValue, showCondition}
  * @returns
@@ -11,7 +10,7 @@ import { useState, useRef, useEffect } from "react";
 const SearchBar = ({ setSearchInputValue, showCondition }) => {
   const searchBarRef = useRef();
 
-  // searchBar 클릭 시
+  // search bar 클릭 시 showCondition 값이 변경될 때마다 search bar에 포커싱
   useEffect(() => {
     searchBarRef.current.focus();
   }, [showCondition]);
@@ -34,14 +33,21 @@ const SearchBar = ({ setSearchInputValue, showCondition }) => {
   );
 };
 
-// Option 리스트
+/**
+ *  OptionList 컴포넌트
+ *  옵션 리스트를 렌더링한다
+ *  옵션 선택 시 해당 텍스트를 selected bar에서 보여줌
+ *
+ * @param {Object} {setSelectedBar, setShowCondition, showCondition, filteredList}
+ * @returns
+ */
 const OptionList = ({
   setSelectedBar,
   setShowCondition,
   showCondition,
   filteredList,
 }) => {
-  // 옵션 선택 시 selectedBar에서 해당 텍스트 보여주기
+  // 옵션 선택 시 selected bar에서 해당 텍스트 보여주기
   const selectItem = (e) => {
     e.preventDefault();
     setSelectedBar(e.target.innerText);
@@ -58,7 +64,13 @@ const OptionList = ({
   return <ul className={"category-option"}>{option}</ul>;
 };
 
-// dropdown 컴포넌트
+/**
+ *  DropdownContent 컴포넌트
+ *  드랍다운 기능의 메인 컴포넌트
+ *  Dropdown.js에서 설정한 전역변수 배열(option list)를 props로 받아온다.
+ * @param {Object} {optionList}
+ * @returns
+ */
 const DropdownContent = ({ optionList }) => {
   const [showCondition, setShowCondition] = useState(false);
 
@@ -71,6 +83,8 @@ const DropdownContent = ({ optionList }) => {
   const [selectedBar, setSelectedBar] = useState("선택된 내용"); // selectedBar에 클릭된 옵션 보여주기
   const [searchInputValue, setSearchInputValue] = useState(""); // search text value
 
+  //  옵션 리스트와 search bar의 value 값을 비교하여 공백일 경우 모든 옵션을 보여주고
+  //  공백이 아닐 경우 value 값과 일치하는 옵션만을 보여준다.
   const filteredList =
     searchInputValue.length !== 0
       ? optionList.filter((option) => {

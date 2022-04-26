@@ -6,6 +6,13 @@ import Slider from "./components/slider/Slider";
 import Input from "./components/input/Input";
 import Dropdown from "./components/dropdown/Dropdown";
 
+/** Nav 컴포넌트
+ *  App.js에서 5가지 기능에 대한 배열을 받아옵니다.
+ *  배열을 화면 상단의 탭에 나열합니다.
+ *  onClick으로 Comp state를 변경하여 탭 클릭 시 해당 기능을 보여줍니다.
+ * @param {Object} {setComp, navArr}
+ * @returns
+ */
 const Nav = ({ setComp, navArr }) => {
   const list = navArr.map((item) => (
     <li
@@ -26,6 +33,11 @@ const Nav = ({ setComp, navArr }) => {
   );
 };
 
+/** Main 컴포넌트
+ *  if 문을 활용하여 Nav의 onClick에 의해 comp의 상태가 변경될 경우 content 변수를 comp에 해당하는 컴포넌트 화면을 <main>에 렌더링합니다.
+ * @param {Object} {comp, navArr}
+ * @returns
+ */
 const Main = ({ comp, navArr }) => {
   let content = null;
 

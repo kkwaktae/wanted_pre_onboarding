@@ -1,6 +1,11 @@
 import React from "react";
 import { useState } from "react";
 
+/** LivePercentage 컴포넌트
+ *  per state를 props로 전달받고 해당 값을 화면에 보여줍니다.
+ * @param {Object} {per}
+ * @returns
+ */
 const LivePercentage = ({ per }) => {
   const val = per;
   return (
@@ -11,6 +16,13 @@ const LivePercentage = ({ per }) => {
   );
 };
 
+/** ToolBox 컴포넌트
+ *  1%, 25%, 50%, 75%, 100% 지점에 point UI를 만듭니다.
+ *  per state를 props로 전달받아 상태 변화를 감지합니다.
+ *  per 수치가 각 %지점을 지날 때 point UI의 색깔을 변경합니다.
+ * @param {Object} {per, setPer}
+ * @returns
+ */
 const ToolBox = ({ per, setPer }) => {
   const listArr = [
     {
@@ -40,6 +52,7 @@ const ToolBox = ({ per, setPer }) => {
     },
   ];
 
+  // 1% 25% 50% 75% 100% 지점에 원 UI 생성
   const list = listArr.map((item) => (
     <li
       key={item.id}
@@ -48,6 +61,7 @@ const ToolBox = ({ per, setPer }) => {
     ></li>
   ));
 
+  // Input value 값(1~100까지의 수치)를 val변수에 할당
   const dragPointer = (e) => {
     const val = e.target.value;
     setPer(val);
@@ -60,7 +74,7 @@ const ToolBox = ({ per, setPer }) => {
         className={"bar-input"}
         min="1"
         max="100"
-        value={per}
+        defaultValue={per}
         onInput={dragPointer}
       />
       <li className={"bar-line base"}></li>
@@ -73,6 +87,12 @@ const ToolBox = ({ per, setPer }) => {
   );
 };
 
+/** PercentageBtn
+ *  1% 25% 50% 75% 100%를 나타내는 버튼 UI를 만듭니다.
+ *  각 UI 클릭 시 해당하는 class명과 percent 값을 per state에 반영하여 상태를 변경합니다.
+ * @param {Object} {setPer}
+ * @returns
+ */
 const PercentageBtn = ({ setPer }) => {
   const arr = [
     {
@@ -110,7 +130,15 @@ const PercentageBtn = ({ setPer }) => {
   return <ul className={"percentage-box"}>{btn}</ul>;
 };
 
+/** SliderContent 컴포넌트
+ *  슬라이더 기능의 메인 컴포넌트
+ *  per를 변수로 활용하여 상태를 설정하고
+ *  각 컴포넌트에 props를 전달하여 상태를 관리합니다.
+ * @param
+ * @returns
+ */
 const SliderContent = () => {
+  // 초기값 50으로 설정
   const [per, setPer] = useState(50);
 
   return (
