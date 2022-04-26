@@ -2,3 +2,84 @@ header {
   padding: 5% 0;
   text-align: center;
 }
+
+.dropdown-container {
+  width: 15%;
+  margin: 0 auto;
+}
+
+.selected-content {
+  width: 100%;
+  padding: 4%;
+  border: 1px solid #cfcfcf;
+  border-radius: 0.3em;
+  position: relative;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.selected-content p {
+  color: #666;
+}
+
+.dropdown-icon {
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: calc(50% - 0.5em);
+  right: calc(5% - 0.5em);
+}
+
+.category {
+  width: 100%;
+  margin-top: 2%;
+  border: 1px solid #cfcfcf;
+  border-radius: 0.3em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  visibility: hidden;
+  overflow: auto;
+}
+
+.search-box {
+  position: relative;
+  font-size: 0.6em;
+}
+
+.search-bar {
+  border: none;
+  width: 100%;
+  margin-top: 1%;
+  padding: 3% 4% 4% 15%;
+  outline: none;
+  border-bottom: 1px solid #cfcfcf;
+  background: #fafafa;
+}
+
+.search-bar::placeholder {
+  color: #cfcfcf;
+}
+
+.search-icon {
+  width: 1em;
+  height: 1em;
+  font-size: 1rem;
+  position: absolute;
+  top: calc(50% - 0.5em);
+  left: calc(8% - 0.5em);
+  color: #cfcfcf;
+}
+
+.category-option {
+  font-size: 0.7em;
+}
+
+.option {
+  padding: 4% 15%;
+  color: #666;
+  cursor: pointer;
+  background: #fafafa;
+}
+
+.option:hover {
+  background: #eee;
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-// e-mail input
+// e-mail input 컴포넌트
 const EmailInput = ({
   types,
   emailCheck,
@@ -18,7 +18,6 @@ const EmailInput = ({
 
     // e-mail 양식 감지
     const regExp = /^([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-
     if (regExp.test(value)) {
       setEmailCheck(true);
       setDisplayReconfirm(false);
@@ -29,10 +28,12 @@ const EmailInput = ({
     }
   };
 
+  // 탭키 또는 엔터키 입력 시 email 형식 적합성 체크
   const confirmEmail = (e) => {
     const keyNumber = e.keyCode;
 
     if (keyNumber === 13) {
+      // email 형식이 올바르지 않으면 오류 문구 보여주기
       if (!emailCheck) {
         setDisplayReconfirm(true);
       } else {
@@ -44,8 +45,6 @@ const EmailInput = ({
       } else {
         setDisplayReconfirm(false);
       }
-    } else {
-      return;
     }
   };
 
@@ -82,27 +81,24 @@ const EmailInput = ({
   );
 };
 
-// Password input
-const PasswordInput = ({
-  types,
-  emailCheck,
-  setEmailCheck,
-  displayReconfirm,
-  setDisplayReconfirm,
-}) => {
+// Password input 컴포넌트
+const PasswordInput = ({ types }) => {
   const [passwordType, setPasswordType] = useState(types[1]);
   const [passwordSafety, setPasswordSafety] = useState(true);
   const safetyIconColor = ["#aaa", "#00bfa5"];
+  const passwordRef = useRef();
 
-  const changeInputType = (e) => {
+  useEffect(() => {
+    passwordRef.current.focus();
+  }, [passwordSafety]);
+
+  // password type(보안모드) 변경
+  const changePasswordType = (e) => {
     e.preventDefault();
 
     if (passwordSafety) {
-      // input type 변경
       setPasswordSafety(!passwordSafety);
       setPasswordType(types[0]);
-
-      // icon 변경
     } else {
       setPasswordSafety(!passwordSafety);
       setPasswordType(types[1]);
@@ -117,10 +113,11 @@ const PasswordInput = ({
           type={passwordType}
           placeholder={"Password"}
           className={"input-password"}
+          ref={passwordRef}
         />
         <i
           className={"icon-password material-icons"}
-          onClick={changeInputType}
+          onClick={changePasswordType}
           style={{
             color: passwordSafety ? safetyIconColor[0] : safetyIconColor[1],
           }}
