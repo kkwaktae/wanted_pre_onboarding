@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+##App
+* Nav와 Main로 홈 화면을 구성했습니다. Nav에는 각 기능에 대한 탭을 만들었고, if문을 활용하여 content변수에 기능별 컴포넌트 태그를 담아 탭 클릭 시 해당 컴포넌트의 화면을 보여주도록 하였습니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이번계기를 통해 리액트를 접했기 때문에, 최대한 이해하면서 작업하고자 했습니다.
+특히 상태를 관리하는 useState 훅과 컴포넌트 활용하는 부분을 이해하는 것이 어려웠습니다.
 
-## Available Scripts
+---
+##Toggle
+* condition을 변수로 활용하여 상태를 설정하고, 각 컴포넌트에 props를 전달하여 상태를 관리했습니다.
+* condition의 상태변화 따라 UI 스타일을 변경하여 동적 요소를 주었습니다. 
+ 
+useState를 계속해서 사용하다보니 조금씩 익숙해지기 시작했습니다. 
+이때는 상태관리에 따라 style을 제어하는 것에 목적성을 두고 작업했습니다.
+이러한 부분에 있어서 React에서는 대개 삼항연산자를 활용한다는 것을 알 수 있었습니다.
 
-In the project directory, you can run:
+---
+##Tab
+* tab을 상태관리 변수로 활용했습니다. 각 탭의 text를 arr에 담고, tab의 변화에 따라 style을 제어하여 타겟을 변경했습니다.
+ 
+Toggle 기능을 만들 때는 변화요소가 2가지였기 때문에
+상태변화에 따른 style 변화 방식을 인라인 스타일로 작업했었는데, 
+Tab에서는 3가지의 경우가 있었기 때문에 
+아예 style 변경이 필요한 컴포넌트에서 style 값을 변수로 설정하여 인라인 스타일 값에 변수만 넣어주는 방식을 활용했습니다.
 
-### `npm start`
+---
+##Slider
+* per를 상태관리 변수로 활용하고 input의 value(1~100까지의 값)를 할당했습니다.
+* 1%, 25%, 50%, 75%, 100% 지점에 point UI를 만들고 per state를 props로 전달받아 상태 변화를 감지하여 per 수치가 각 %지점을 지날 때 point UI의 색깔을 변경했습니다.
+* 1% 25% 50% 75% 100%를 나타내는 버튼 UI를 만들고, 각 UI 클릭 시 해당하는 class명과 percent 값을 per state에 반영하여 상태를 변경했습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React에서는 input의 value값을 지정할 때, value는 jsx를 읽기전용으로 만들기 때문에 defaultValue를 활용해야 한다는 것을 알게 되었습니다.
+또한, Tab에서 활용했던 style 값을 변수로 설정하여 인라인 스타일 값에 변수만 넣어주는 방식을 활용하며 반복/숙달할 수 있었습니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
+##Input
+* emailCheck 변수로 e-mail UI에 대한 상태를 제어했습니다.
+* displayReconfirm 변수로 e-mail 정규식에 대한 상태를 제어했습니다.
+* Password input의 type 변경 UI 클릭 시 passwordSafety 상태값을 변경하고 input의 type을 password <-> text로 변경했습니다.
+* useRef 훅을 사용하여, type 변경 UI 클릭 시 passwordSafety의 값이 변화할 때만 재렌더링 되어 password 인풋의 커서 맨 마지막 위치에 포커싱했습니다.
+* 정규식을 활용하여 e-mail이 올바른 형식인지에 대한 여부를 검사했고, 적합 여부에 따라 해당 UI 및 문구를 나타냈습니다.
 
-### `npm test`
+정규식을 활용하여 e-mail 형식을 체크하는 방법을 배울 수 있었습니다. 
+password type을 변경하는 UI를 클릭했을 때 포커스를 유지하기 위해 useRef를 적용하여 password input에 포커스는 유지했지만, 
+커서가 맨 앞으로 이동하는 현상이 발생했습니다.
+찾아보니 useRef는 최초 상태가 유지되기 때문에 포커스가 적용된 후에 다시 렌더링 되더라도 커서가 앞으로 이동하는 것이었습니다.
+이를 해결하기 위해 useEffect 훅을 사용했습니다.
+useEffect 훅은 내부 콜백함수를 다음 인자에 해당하는 상태값이 변화할 때에만 다시 렌더링 해주는 방식이었고, 
+이를 통해 포커싱 후 커서 위치 문제를 해결할 수 있었습니다.
+ 
+ ---
+##Dropdown
+* 전역변수로 option list 배열을 할당했습니다.
+* selected bar 클릭 시 dropdown 기능을 활성화했고, useEffect를 활용하여 search bar에 포커싱했습니다.
+  또, 옵션이 클릭되면 selected bar에 클릭된 옵션을 보여주고, dropdown 모달이 사라지도록 했습니다.
+* 옵션 리스트와 search bar의 value 값을 비교하여 공백일 경우 모든 옵션을 보여주고, 공백이 아닐 경우 value 값과 일치하는 옵션만을 보이게 했습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ 개인적으로 가장 어려운 기능이었던 것 같습니다.
+ 옵션 리스트 내에서 filter와 toUpperCase, substring을 사용해야 한다는 것은 짐작했지만,
+ 이를 search bar의 value 값(자식컴포넌트1)과 option list의 요소(자식컴포넌트2)를 비교하는 과정이 쉽지 않았습니다.
+ 이를 개선하기 위해 option list를 Dropdown.js 컴포넌트 전역에 할당하고,
+ dropdown 기능의 메인 컴포넌트인 DropdownContent.js에서 props로 전달받아 비교하여 필터링하니 수월했습니다.
+ 
+---
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+리액트를 처음 접했기 때문에 작업시간도 오래 걸렸고 코드도 깔끔하지 못한 것 같습니다. 
+하지만 이 수행물 덕분에 리액트를 조금이나마 이해할 수 있었고, 
+실무에서 자주 쓰이는 몇몇 기능들을 다룰 수 있는지 체크해볼 수 있었던 값진 경험이었습니다.
