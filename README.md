@@ -1,4 +1,4 @@
-##App
+## App
 * Nav와 Main로 홈 화면을 구성했습니다. Nav에는 각 기능에 대한 탭을 만들었고, if문을 활용하여 content변수에 기능별 컴포넌트 태그를 담아 탭 클릭 시 해당 컴포넌트의 화면을 보여주도록 하였습니다.
 
 이번계기를 통해 리액트를 접했기 때문에, 최대한 이해하면서 작업하고자 했습니다.
@@ -14,7 +14,7 @@ useState를 계속해서 사용하다보니 조금씩 익숙해지기 시작했�
 이러한 부분에 있어서 React에서는 대개 삼항연산자를 활용한다는 것을 알 수 있었습니다.
 
 ---
-##Tab
+## Tab
 * tab을 상태관리 변수로 활용했습니다. 각 탭의 text를 arr에 담고, tab의 변화에 따라 style을 제어하여 타겟을 변경했습니다.
  
 Toggle 기능을 만들 때는 변화요소가 2가지였기 때문에
@@ -23,7 +23,7 @@ Tab에서는 3가지의 경우가 있었기 때문에
 아예 style 변경이 필요한 컴포넌트에서 style 값을 변수로 설정하여 인라인 스타일 값에 변수만 넣어주는 방식을 활용했습니다.
 
 ---
-##Slider
+## Slider
 * per를 상태관리 변수로 활용하고 input의 value(1~100까지의 값)를 할당했습니다.
 * 1%, 25%, 50%, 75%, 100% 지점에 point UI를 만들고 per state를 props로 전달받아 상태 변화를 감지하여 per 수치가 각 %지점을 지날 때 point UI의 색깔을 변경했습니다.
 * 1% 25% 50% 75% 100%를 나타내는 버튼 UI를 만들고, 각 UI 클릭 시 해당하는 class명과 percent 값을 per state에 반영하여 상태를 변경했습니다.
@@ -32,7 +32,7 @@ React에서는 input의 value값을 지정할 때, value는 jsx를 읽기전용�
 또한, Tab에서 활용했던 style 값을 변수로 설정하여 인라인 스타일 값에 변수만 넣어주는 방식을 활용하며 반복/숙달할 수 있었습니다.
 
 ---
-##Input
+## Input
 * emailCheck 변수로 e-mail UI에 대한 상태를 제어했습니다.
 * displayReconfirm 변수로 e-mail 정규식에 대한 상태를 제어했습니다.
 * Password input의 type 변경 UI 클릭 시 passwordSafety 상태값을 변경하고 input의 type을 password <-> text로 변경했습니다.
@@ -48,7 +48,7 @@ useEffect 훅은 내부 콜백함수를 다음 인자에 해당하는 상태값�
 이를 통해 포커싱 후 커서 위치 문제를 해결할 수 있었습니다.
  
  ---
-##Dropdown
+## Dropdown
 * 전역변수로 option list 배열을 할당했습니다.
 * selected bar 클릭 시 dropdown 기능을 활성화했고, useEffect를 활용하여 search bar에 포커싱했습니다.
   또, 옵션이 클릭되면 selected bar에 클릭된 옵션을 보여주고, dropdown 모달이 사라지도록 했습니다.
